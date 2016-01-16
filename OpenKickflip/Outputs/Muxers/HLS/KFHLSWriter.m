@@ -12,7 +12,7 @@
 #import "libavformat/avformat.h"
 #import "libavcodec/avcodec.h"
 #import "libavutil/opt.h"
-#import "librtmp/log.h"
+//#import "librtmp/log.h"
 #import "KFLog.h"
 
 @interface KFHLSWriter()
@@ -36,10 +36,10 @@
         
 #if DEBUG
         av_log_set_level(AV_LOG_VERBOSE);
-        RTMP_LogSetLevel(RTMP_LOGALL);
+//        RTMP_LogSetLevel(RTMP_LOGALL);
 #else
         av_log_set_level(AV_LOG_QUIET);
-        RTMP_LogSetLevel(RTMP_LOGCRIT);
+//        RTMP_LogSetLevel(RTMP_LOGCRIT);
 #endif
         
         _directoryPath = directoryPath;
