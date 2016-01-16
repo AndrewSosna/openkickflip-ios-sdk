@@ -37,9 +37,9 @@
  *
  *  *Note* This method is automatically called by the AWS Mobile SDK for iOS, and you do not need to call this method in general.
  *
- *  @return BFTask.
+ *  @return AWSTask.
  */
-- (BFTask *)refresh;
+- (AWSTask *)refresh;
 
 - (instancetype)initWithStream:(KFS3Stream*)stream;
 

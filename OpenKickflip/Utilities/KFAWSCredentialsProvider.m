@@ -7,7 +7,7 @@
 //
 
 #import "KFAWSCredentialsProvider.h"
-#import <Bolts/BFTask.h>
+#import <AWSCore/AWSTask.h>
 
 @implementation KFAWSCredentialsProvider
 
@@ -26,10 +26,10 @@
  *
  *  *Note* This method is automatically called by the AWS Mobile SDK for iOS, and you do not need to call this method in general.
  *
- *  @return BFTask.
+ *  @return AWSTask.
  */
-- (BFTask *)refresh {
-    return [BFTask taskWithError:[NSError errorWithDomain:@"io.kickflip.sdk" code:100 userInfo:@{NSLocalizedDescriptionKey: @"Refresh not supported"}]];
+- (AWSTask *)refresh {
+    return [AWSTask taskWithError:[NSError errorWithDomain:@"io.kickflip.sdk" code:100 userInfo:@{NSLocalizedDescriptionKey: @"Refresh not supported"}]];
 }
 
 /** Utility to convert from "us-west-1" to enum AWSRegionUSWest1 */
