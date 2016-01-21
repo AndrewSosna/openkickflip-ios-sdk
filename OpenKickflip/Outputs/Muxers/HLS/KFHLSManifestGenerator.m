@@ -68,9 +68,23 @@
 }
 
 - (NSString*) stripToNumbers:(NSString*)string {
-    return [[string componentsSeparatedByCharactersInSet:
-             [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
-            componentsJoinedByString:@""];
+    NSArray *array = [string componentsSeparatedByCharactersInSet:
+                      [[NSCharacterSet decimalDigitCharacterSet]invertedSet]];
+    NSString *result = @"";
+    for (NSString *str in array) {
+        result = [result stringByAppendingString:str];
+        if (str.length > 0 && ![result containsString:@"."]) {
+            result = [result stringByAppendingString:@"."];
+        }
+    }
+    
+    return result;
+}
+
+- (NSString*) stripToDecimal:(NSString*)string {
+    NSArray *array = [string componentsSeparatedByCharactersInSet:
+                      [[NSCharacterSet decimalDigitCharacterSet]invertedSet]];
+    return [array componentsJoinedByString:@""];
 }
 
 - (void) appendFromLiveManifest:(NSString *)liveManifest {
@@ -83,7 +97,7 @@
             NSString *extInf = line;
             NSString *extInfNumberString = [self stripToNumbers:extInf];
             NSString *segmentName = rawLines[index+1];
-            NSString *segmentNumberString = [self stripToNumbers:segmentName];
+            NSString *segmentNumberString = [self stripToDecimal:segmentName];
             float duration = [extInfNumberString floatValue];
             NSInteger sequence = [segmentNumberString integerValue];
             [self appendFileName:segmentName duration:duration mediaSequence:sequence];
