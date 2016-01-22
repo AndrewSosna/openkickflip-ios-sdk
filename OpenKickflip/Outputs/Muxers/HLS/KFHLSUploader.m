@@ -130,6 +130,7 @@ static NSString * const kKFS3Key = @"kKFS3Key";
     uploadRequest.key = key;
     uploadRequest.body = [NSURL fileURLWithPath:filePath];
     uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
+	uploadRequest.contentType  = @"video/MP2T";
     
     __block NSDate *startUploadDate;
     uploadRequest.uploadProgress = ^(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
@@ -187,6 +188,7 @@ static NSString * const kKFS3Key = @"kKFS3Key";
     uploadRequest.key = key;
     uploadRequest.body = data;
     uploadRequest.ACL = AWSS3ObjectCannedACLPublicRead;
+	uploadRequest.contentType  = @"application/x-mpegURL";
     uploadRequest.cacheControl = @"max-age=0";
     uploadRequest.contentLength = @(data.length);
     
