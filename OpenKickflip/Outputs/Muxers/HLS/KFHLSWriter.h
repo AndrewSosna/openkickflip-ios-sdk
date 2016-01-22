@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
-static kHLSSegmentDurationSeconds = 3;
+static kHLSSegmentDurationSeconds = 5;
 static kHLSListSize = 3;
 
 @interface KFHLSWriter : NSObject
